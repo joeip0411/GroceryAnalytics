@@ -1,0 +1,67 @@
+[0m21:57:15.110837 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002DAABE90850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002DAA78C4640>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002DAA78C4850>]}
+
+
+============================== 21:57:15.110837 | a21387a2-6008-44ab-9db9-fd8b8b1974a9 ==============================
+[0m21:57:15.110837 [info ] [MainThread]: Running with dbt=1.6.3
+[0m21:57:15.110837 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\joete\\.dbt', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'target_path': 'None', 'invocation_command': 'dbt init', 'send_anonymous_usage_stats': 'True'}
+[0m21:57:15.110837 [warn ] [MainThread]: [ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/joete/.dbt')}
+[0m21:57:15.110837 [info ] [MainThread]: Creating dbt configuration folder at 
+[0m21:57:33.124988 [debug] [MainThread]: Starter project path: C:\Users\joete\anaconda3\envs\grocery_analytics\lib\site-packages\dbt\include\starter_project
+[0m21:57:33.140602 [info ] [MainThread]: 
+Your new dbt project "dbt_grocery_analytics" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m21:57:33.140602 [info ] [MainThread]: Setting up your profile.
+[0m22:11:14.085719 [debug] [MainThread]: Command `dbt init` failed at 22:11:14.085719 after 838.98 seconds
+[0m22:11:14.086717 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002DAABE90850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002DACE2E25B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002DACE2E2550>]}
+[0m22:11:14.086717 [debug] [MainThread]: Flushing usage events
+[0m22:11:22.281400 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002366E4238E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002366A2413A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002366A2414F0>]}
+
+
+============================== 22:11:22.281400 | 130999f2-d3dc-4671-baa1-afcae1ea0a77 ==============================
+[0m22:11:22.281400 [info ] [MainThread]: Running with dbt=1.6.3
+[0m22:11:22.281400 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\joete\\.dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': 'logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'invocation_command': 'dbt init', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m22:11:31.686467 [info ] [MainThread]: A project called dbt_grocery_analytics already exists here.
+[0m22:11:31.702080 [debug] [MainThread]: Command `dbt init` succeeded at 22:11:31.702080 after 9.42 seconds
+[0m22:11:31.702080 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002366E4238E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023670C29DF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023670C29EE0>]}
+[0m22:11:31.702080 [debug] [MainThread]: Flushing usage events
+[0m22:12:01.071746 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B4BECD4A90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B4BAB21370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B4C14F95B0>]}
+
+
+============================== 22:12:01.071746 | 6294f6cb-2f28-427c-9b5c-5290c0c5485d ==============================
+[0m22:12:01.071746 [info ] [MainThread]: Running with dbt=1.6.3
+[0m22:12:01.071746 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'profiles_dir': 'C:\\Users\\joete\\.dbt', 'log_path': 'logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt init', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m22:12:06.517446 [debug] [MainThread]: Starter project path: C:\Users\joete\anaconda3\envs\grocery_analytics\lib\site-packages\dbt\include\starter_project
+[0m22:12:06.537237 [info ] [MainThread]: 
+Your new dbt project "dbt_grocery_analytics" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m22:12:06.538237 [info ] [MainThread]: Setting up your profile.
+[0m22:13:52.454851 [info ] [MainThread]: Profile dbt_grocery_analytics written to C:\Users\joete\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m22:13:52.455850 [debug] [MainThread]: Command `dbt init` succeeded at 22:13:52.455850 after 111.39 seconds
+[0m22:13:52.455850 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B4BECD4A90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B4C14D13D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001B4C14F9160>]}
+[0m22:13:52.456850 [debug] [MainThread]: Flushing usage events

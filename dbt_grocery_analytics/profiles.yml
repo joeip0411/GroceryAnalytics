@@ -1,0 +1,14 @@
+dbt_grocery_analytics:
+  target: dev
+  outputs:
+    dev:
+      account: xn39852.australia-east.azure
+      database: GROCERY_ANALYTICS
+      password: "{{ env_var('TF_VAR_SNOWFLAKE_DBT_PASSWORD') }}"
+      role: SYSADMIN
+      schema: PUBLIC
+      threads: 4
+      type: snowflake
+      user: dbt
+      warehouse: ENGINEERING_WH
+
