@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: raw_woolworths__observation_sku_info
+    columns:
+      - name: NAME
+        tests:
+          - not_null
+      - name: OFFERS
+        test:
+          - not_null
+      - name: SKU
+        test:
+          - not_null
+      - name: EXTRACTIONTIME
+        test:
+          - not_null
+  - name: raw_woolworths__specials_sku_info
+    columns:
+      - name: NAME
+        tests:
+          - not_null
+      - name: OFFERS
+        test:
+          - not_null
+      - name: SKU
+        test:
+          - not_null
+      - name: EXTRACTIONTIME
+        test:
+          - not_null
+  - name: raw_woolworths__specials_sku
+    columns:
+      - name: CATEGORY
+        tests:
+          - not_null
+      - name: EXTRACTIONTIME
+        test:
+          - not_null
+      - name: SKU
+        test:
+          - not_null
+
+    

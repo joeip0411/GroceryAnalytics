@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: dim_brand
+    columns:
+      - name: BRAND_KEY
+        tests:
+          - not_null
+          - unique
+      - name: BRAND_NAME
+        tests:
+          - not_null
+          - unique
+      - name: EXTRACTIONTIME
+        test:
+          - not_null
+
+  - name: fct_grocery_basket_price
+    columns:
+      - name: BRAND_KEY
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_brand')
+              field: BRAND_KEY
+      - name: EXTRACTION_TIME
+        test:
+          - not_null
+      - name: EXTRACTION_TIME_DATE_KEY
+        test:
+          - not_null
+      - name: PRICE
+        test:
+          - not_null
+          - greater_than_equal_zero
+      - name: PRODUCT_KEY
+        test:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: PRODUCT_KEY
+  - name: dim_product
+    columns:
+      - name: EXTRACTION_TIME
+        tests:
+          - not_null
+      - name: PRODUCT_KEY
+        test:
+          - not_null
+          - unique
+      - name: PRODUCT_NAME
+        test:
+          - not_null
+          - unique
+      - name: SKU
+        test:
+          - not_null
+          - unique
+
+    

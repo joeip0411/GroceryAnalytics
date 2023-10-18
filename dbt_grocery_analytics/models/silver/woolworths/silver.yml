@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: stg_woolworths__brand
+    columns:
+      - name: BRAND_NAME
+        tests:
+          - not_null
+          - unique
+      - name: EXTRACTIONTIME
+        test:
+          - not_null
+  - name: stg_woolworths__grocery_basket_price
+    columns:
+      - name: BRAND_NAME
+        tests:
+          - not_null
+      - name: EXTRACTION_TIME
+        test:
+          - not_null
+      - name: PRICE
+        test:
+          - not_null
+          - greater_than_equal_zero
+      - name: SKU
+        test:
+          - unique
+          - not_null
+  - name: stg_woolworths__product
+    columns:
+      - name: EXTRACTION_TIME
+        tests:
+          - not_null
+      - name: PRODUCT_NAME
+        test:
+          - not_null
+          - unique
+      - name: SKU
+        test:
+          - not_null
+          - unique
+
+    
