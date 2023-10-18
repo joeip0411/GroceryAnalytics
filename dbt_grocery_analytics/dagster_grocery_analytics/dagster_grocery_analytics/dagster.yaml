@@ -1,32 +1,8 @@
-event_log_storage:
- module: dagster_mysql.event_log
- class: MySQLEventLogStorage
- config:
-  mysql_db:
-   username: dagster
-   password: Jj52048451
-   hostname: localhost
-   db_name: dagster
-   port: 3306
-
-run_storage:
- module: dagster_mysql.run_storage
- class: MySQLRunStorage
- config:
-  mysql_db:
-   username: dagster
-   password: Jj52048451
-   hostname: localhost
-   db_name: dagster
-   port: 3306
-
-schedule_storage:
- module: dagster_mysql.schedule_storage
- class: MySQLScheduleStorage
- config:
-  mysql_db:
-   username: dagster
-   password: Jj52048451
-   hostname: localhost
-   db_name: dagster
-   port: 3306
+storage:
+  mysql:
+    mysql_db:
+      username: dagster
+      password: Jj52048451
+      hostname: localhost
+      db_name: dagster
+      port: 3306

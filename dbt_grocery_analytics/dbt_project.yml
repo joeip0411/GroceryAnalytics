@@ -33,5 +33,18 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_grocery_analytics:
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    silver:
+      woolworths:
+        +materialized: table
+        +schema: silver
+    gold:
+      conformed_dimensions:
+        +materialized: table
+        +schema: gold
+
+
+seeds:
+  dbt_grocery_analytics:
+    +enabled: true
+    +schema: bronze
+      

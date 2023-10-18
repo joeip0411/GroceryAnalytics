@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: WOOLWORTHS
+    database: GROCERY_ANALYTICS  
+    schema: RAW  
+    tables:
+      - name: OBSERVATION_SKU_INFO_TEMP
+        meta:
+          dagster:
+            asset_key: ["OBSERVATION_SKU_INFO_TEMP"]
+      - name: SPECIALS_SKU_INFO_TEMP
+        meta:
+          dagster:
+            asset_key: ["SPECIALS_SKU_INFO_TEMP"]
+      - name: SPECIALS_SKU_TEMP
+        meta:
+          dagster:
+            asset_key: ["SPECIALS_SKU_TEMP"]
+
+
