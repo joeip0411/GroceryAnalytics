@@ -1,56 +1,33 @@
 {{ config(
-        materialized = 'incremental',
-        unique_key = 'BRAND_NAME'
-    ) 
+    tags = ["silver"]
+) 
 }} 
 
-WITH cte AS (
-    SELECT
-        IFNULL(parse_json(brand) ['name'], 'N/A') AS brand_name,
+with cte as (
+    select
+        ifnull(parse_json(brand) ['name'], 'N/A') as brand_name,
         extractiontime as extraction_time
-    FROM
+    from
         {{ ref('raw_woolworths__observation_sku_info') }}
-
-    {% if is_incremental() %}
-    WHERE
-        extraction_time > (
-            SELECT
-                max(extraction_time)
-            FROM
-                {{ this }}
-        ) 
-    {% endif %}
-
-    UNION
-
-    SELECT
-        IFNULL(parse_json(brand) ['name'], 'N/A') AS brand_name,
+    union
+    select
+        ifnull(parse_json(brand) ['name'], 'N/A') as brand_name,
         extractiontime as extraction_time
-    FROM
+    from
         {{ ref('raw_woolworths__specials_sku_info') }}
-
-    {% if is_incremental() %}
-    WHERE
-        extraction_time > (
-            SELECT
-                max(extraction_time)
-            FROM
-                {{ this }}
-        ) 
-    {% endif %}
 ),
-
 dedup as (
-    SELECT
+    select
         brand_name,
         extraction_time
-    FROM
-        cte
-    QUALIFY row_number() over (partition by brand_name order by brand_name) = 1
-
+    from
+        cte qualify row_number() over (
+            partition by brand_name
+            order by
+                brand_name desc
+        ) = 1
 )
-
-SELECT
+select
     *
-FROM
+from
     dedup

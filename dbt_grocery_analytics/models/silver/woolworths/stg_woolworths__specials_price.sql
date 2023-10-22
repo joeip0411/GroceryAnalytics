@@ -11,7 +11,7 @@ with final as (
         parse_json(offers) ['price']::decimal(12, 4) as price,
         extractiontime as extraction_time
     from
-        {{ ref('raw_woolworths__observation_sku_info') }} 
+        {{ ref('raw_woolworths__specials_sku_info') }} 
 )
 select
     *

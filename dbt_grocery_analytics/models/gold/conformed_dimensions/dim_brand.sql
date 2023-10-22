@@ -1,6 +1,7 @@
 {{ config(
-        materialized = 'incremental',
-        unique_key = 'BRAND_KEY'
+        unique_key = 'BRAND_KEY',
+        tags=["grocery_basket_price_tracking", "specials_price_tracking", "gold"],
+        group="conformed_dimensions"
     ) 
 }} 
 

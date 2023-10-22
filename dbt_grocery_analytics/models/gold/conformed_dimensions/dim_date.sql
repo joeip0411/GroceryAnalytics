@@ -1,3 +1,10 @@
+{{ config(
+        materialized = 'table',
+        tags=["gold"],
+        group="conformed_dimensions"
+    ) 
+}} 
+
 WITH cte AS (
     {{ dbt_date.get_date_dimension("2023-01-01", "2025-12-31") }}
 ),

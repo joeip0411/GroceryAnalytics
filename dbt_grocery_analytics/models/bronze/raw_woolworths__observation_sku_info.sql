@@ -1,14 +1,24 @@
 {{ config(
-        materialized = 'incremental'
-    ) 
-}} 
+    tags = ["bronze"]
+) 
 
-with final as (
-    SELECT
+}} with final as (
+    select
         *
-    FROM
-        {{ source('WOOLWORTHS', 'OBSERVATION_SKU_INFO_TEMP') }}
-
+    from
+        {{ source('WOOLWORTHS', 'OBSERVATION_SKU_INFO_TEMP') }} 
+    
+    {% if is_incremental() %}
+    where
+        extractiontime > (
+            select
+                max(extractiontime)
+            from
+                { { this } }
+        ) 
+    {% endif %}
 )
-
-select * from final
+select
+    *
+from
+    final
