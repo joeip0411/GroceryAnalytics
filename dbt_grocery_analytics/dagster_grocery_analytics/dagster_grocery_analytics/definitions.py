@@ -23,9 +23,6 @@ from .sensors import my_asset_sensor, slack_on_run_failure, woolworths_asset_sen
 all_assets = load_assets_from_modules([assets])
 
 
-
-#schedules
-
 defs = Definitions(
 
     assets=all_assets,
