@@ -6,3 +6,12 @@ storage:
       hostname: localhost
       db_name: dagster
       port: 3306
+
+compute_logs:
+  module: dagster_azure.blob.compute_log_manager
+  class: AzureBlobComputeLogManager
+  config:
+    storage_account: joeipdataengineering
+    container: groceryanalytics
+    secret_key:
+      env: STORAGE_AC_SECRET_KEY
