@@ -2,10 +2,7 @@ version: 2
 
 models:
   - name: fct_specials_price
-    description: |
-        One row per product per extraction date time. 
-
-        This table contains information about prices of products which are on half-price specials.
+    description: '{{ doc("fct_specials_price") }}'
     columns:
       - name: BRAND_KEY
         tests:
@@ -32,10 +29,7 @@ models:
               field: PRODUCT_KEY
         description: Foreign key from dim_product.product_key
   - name: fct_grocery_basket_price
-    description: |
-        One row per product per extraction date time. 
-
-        This table contains information about prices of products of interest.
+    description: '{{ doc("fct_grocery_basket_price") }}'
     columns:
       - name: BRAND_KEY
         tests:
