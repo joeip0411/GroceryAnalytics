@@ -1,7 +1,6 @@
 version: 2
 
 models:
-
   - name: fct_specials_price
     description: |
         One row per product per extraction date time. 
@@ -15,7 +14,6 @@ models:
               to: ref('dim_brand')
               field: BRAND_KEY
         description: Foreign key from dim_brand.brand_key
-
       - name: EXTRACTION_TIME
         tests:
           - not_null
@@ -33,7 +31,6 @@ models:
               to: ref('dim_product')
               field: PRODUCT_KEY
         description: Foreign key from dim_product.product_key
-
   - name: fct_grocery_basket_price
     description: |
         One row per product per extraction date time. 
@@ -47,7 +44,6 @@ models:
               to: ref('dim_brand')
               field: BRAND_KEY
         description: Foreign key from dim_brand.brand_key
-
       - name: EXTRACTION_TIME
         tests:
           - not_null
@@ -65,7 +61,6 @@ models:
               to: ref('dim_product')
               field: PRODUCT_KEY
         description: Foreign key from dim_product.product_key
-
   - name: dim_brand
     description: |
         One row per brand. 
@@ -83,7 +78,6 @@ models:
       - name: EXTRACTIONTIME
         tests:
           - not_null
-
   - name: dim_product
     description: |
         One row per product. 
