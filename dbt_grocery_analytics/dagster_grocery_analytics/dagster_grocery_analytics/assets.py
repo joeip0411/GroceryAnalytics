@@ -23,19 +23,27 @@ wait_for_all_parents_policy = AutoMaterializePolicy.eager()\
     .with_rules(AutoMaterializeRule.skip_on_not_all_parents_updated())
 
 class CustomDagsterDbtTranslator(DagsterDbtTranslator):
-    def get_auto_materialize_policy(
-        self, dbt_resource_props: Mapping[str, Any]
-    ) -> Optional[AutoMaterializePolicy]:
-        return wait_for_all_parents_policy
+    """Class to modify default behaviour of dagster-dbt
+    """
+    def get_auto_materialize_policy(self, 
+                                    dbt_resource_props: Mapping[str, Any],
+                                ) -> Optional[AutoMaterializePolicy]:
+        """Set default auto materialisation policy for dbt assets
+        """
+        return AutoMaterializePolicy.eager()
 
-    def get_group_name(
-        self, dbt_resource_props: Mapping[str, Any]
-    ) -> Optional[str]:
+    def get_group_name(self, 
+                       dbt_resource_props: Mapping[str, Any],
+                    ) -> Optional[str]:
+        """Set default asset group for dbt asset
+        """
         return "woolworths"
     
 @dbt_assets(manifest=dbt_manifest_path,
             dagster_dbt_translator=CustomDagsterDbtTranslator())
 def dbt_grocery_analytics_dbt_assets(context: OpExecutionContext, dbt: DbtCliResource):
+    """dbt assets in this dagster project
+    """
     yield from dbt.cli(["build"], context=context).stream()
 
 
@@ -51,7 +59,10 @@ special_url = SourceAsset(key=AssetKey("specials_url"),
 @asset(group_name = 'woolworths', 
        io_manager_key='SnowflakeIOManagerGARaw',
        compute_kind="python")
-def OBSERVATION_SKU_INFO_TEMP(config:ObservationSkuInfoConfig, grocery_basket_sku) -> pd.DataFrame:
+def OBSERVATION_SKU_INFO_TEMP(config:ObservationSkuInfoConfig, #noqa N802
+                              grocery_basket_sku) -> pd.DataFrame:
+    """Product related data for grocery basket products
+    """
 
     observation_sku = grocery_basket_sku['sku'].tolist()
 
@@ -62,7 +73,10 @@ def OBSERVATION_SKU_INFO_TEMP(config:ObservationSkuInfoConfig, grocery_basket_sk
 @asset(group_name = 'woolworths', 
        io_manager_key='SnowflakeIOManagerGARaw',
        compute_kind="python")
-def SPECIALS_SKU_TEMP(config:SpecialSkuConfig, specials_url) -> pd.DataFrame:
+def SPECIALS_SKU_TEMP(config:SpecialSkuConfig, #noqa N802
+                      specials_url) -> pd.DataFrame: 
+    """SKU for product which is on specials
+    """
 
     special_url = specials_url[specials_url['selected'] == 1]['loc'].to_list()
 
@@ -74,7 +88,10 @@ def SPECIALS_SKU_TEMP(config:SpecialSkuConfig, specials_url) -> pd.DataFrame:
        io_manager_key='SnowflakeIOManagerGARaw',
        compute_kind="python",
        auto_materialize_policy=AutoMaterializePolicy.eager())
-def SPECIALS_SKU_INFO_TEMP(config:SpecialSkuInfoConfig, SPECIALS_SKU_TEMP) -> pd.DataFrame:
+def SPECIALS_SKU_INFO_TEMP(config:SpecialSkuInfoConfig, #noqa N802
+                           SPECIALS_SKU_TEMP) -> pd.DataFrame: 
+    """Product related data for product which is on specials
+    """
     specials_sku_list = SPECIALS_SKU_TEMP['sku'].to_list()
 
     sc = ScraperController(max_workers = config.special_sku_info_max_worker)
