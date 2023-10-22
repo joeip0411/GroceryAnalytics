@@ -15,7 +15,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 # Factories
 class WebDriverFactory:
-    '''
+    """
     Factory class to create selenium web drivers
 
     Attributes:
@@ -23,7 +23,7 @@ class WebDriverFactory:
         user_agent (str): fake user agent to add to the web driver
         referrer (str) : fake referrer to add to the web driver
         servce (selenium.webdriver.chrome.service)
-    '''
+    """
     def __init__(self):
         self.driver_path = "C:\\Users\\joete\\Desktop\\chromedriver.exe"
         self.user_agent = 'User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
@@ -36,23 +36,23 @@ class WebDriverFactory:
         self.service = Service(self.driver_path)
 
     def create_driver(self) -> webdriver.Chrome:
-        '''
+        """
         Args:
             No arguments
         Returns:
             Selenium chrome driver with custom specifications
-        '''
+        """
         return webdriver.Chrome(service = self.service, options = self.options)
     
 
 # Domains
 class Scraper:
-    '''
+    """
     Domain class to handle scraing logic
 
     Attributes:
         sku_api_endpoint (str): endpoint to retrieve sku related information
-    '''
+    """
     def __init__(self):
         self.sku_api_endpoint = 'https://www.woolworths.com.au/api/v3/ui/schemaorg/product/{sku}'
         self.sku_url_container = []
@@ -173,7 +173,6 @@ class ScraperController:
     def __init__(self, max_workers):
         self.max_workers = max_workers
         self.driver_factory = WebDriverFactory()
-        # self.drivers_container = [self.driver_factory.create_driver() for i in range(self.max_workers)]
         self.drivers_container = [self.driver_factory.create_driver() for i in range((self.max_workers+1)*2)]
         self.scraper = Scraper()
         self.specials_retry_urls= []
