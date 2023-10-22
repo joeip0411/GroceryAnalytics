@@ -1,21 +1,28 @@
 version: 2
 
-models:
-  - name: dim_brand
-    columns:
-      - name: BRAND_KEY
-        tests:
-          - not_null
-          - unique
-      - name: BRAND_NAME
-        tests:
-          - not_null
-          - unique
-      - name: EXTRACTIONTIME
-        test:
-          - not_null
+groups:
+  - name: grocery_basket_price_tracking
+    owner:
+      name: Joe
+      email: joeip0411@gmail.com
+  - name: specials_price_tracking
+    owner:
+      name: Joe
+      email: joeip0411@gmail.com
+  - name: conformed_dimensions
+    owner:
+      name: Joe
+      email: joeip0411@gmail.com
 
-  - name: fct_grocery_basket_price
+
+models:
+
+  - name: fct_specials_price
+    group: specials_price_tracking
+    description: |
+        One row per product per extraction date time. 
+
+        This table contains information about prices of products which are on half-price specials.
     columns:
       - name: BRAND_KEY
         tests:
@@ -23,38 +30,98 @@ models:
           - relationships:
               to: ref('dim_brand')
               field: BRAND_KEY
+        description: Foreign key from dim_brand.brand_key
+
       - name: EXTRACTION_TIME
-        test:
+        tests:
           - not_null
       - name: EXTRACTION_TIME_DATE_KEY
-        test:
+        tests:
           - not_null
       - name: PRICE
         test:
           - not_null
           - greater_than_equal_zero
       - name: PRODUCT_KEY
-        test:
+        tests:
           - not_null
           - relationships:
               to: ref('dim_product')
               field: PRODUCT_KEY
+        description: Foreign key from dim_product.product_key
+
+  - name: fct_grocery_basket_price
+    group: grocery_basket_price_tracking
+    description: |
+        One row per product per extraction date time. 
+
+        This table contains information about prices of products of interest.
+    columns:
+      - name: BRAND_KEY
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_brand')
+              field: BRAND_KEY
+        description: Foreign key from dim_brand.brand_key
+
+      - name: EXTRACTION_TIME
+        tests:
+          - not_null
+      - name: EXTRACTION_TIME_DATE_KEY
+        tests:
+          - not_null
+      - name: PRICE
+        test:
+          - not_null
+          - greater_than_equal_zero
+      - name: PRODUCT_KEY
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: PRODUCT_KEY
+        description: Foreign key from dim_product.product_key
+
+  - name: dim_brand
+    description: |
+        One row per brand. 
+    columns:
+      - name: BRAND_KEY
+        tests:
+          - not_null
+          - unique
+        constraints:
+          - type: primary_key
+      - name: BRAND_NAME
+        tests:
+          - not_null
+          - unique
+      - name: EXTRACTIONTIME
+        tests:
+          - not_null
+
   - name: dim_product
+    description: |
+        One row per product. 
     columns:
       - name: EXTRACTION_TIME
         tests:
           - not_null
       - name: PRODUCT_KEY
-        test:
+        constraints:
+          - type: primary_key
+        tests:
           - not_null
           - unique
       - name: PRODUCT_NAME
-        test:
+        tests:
           - not_null
           - unique
       - name: SKU
-        test:
+        tests:
           - not_null
           - unique
+
 
     

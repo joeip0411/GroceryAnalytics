@@ -4,6 +4,7 @@ import pandas as pd
 from dagster import (
     AssetKey,
     AutoMaterializePolicy,
+    AutoMaterializeRule,
     OpExecutionContext,
     SourceAsset,
     asset,
@@ -18,12 +19,14 @@ from .config import (
 from .constants import dbt_manifest_path
 from .Scraper import ScraperController
 
+wait_for_all_parents_policy = AutoMaterializePolicy.eager()\
+    .with_rules(AutoMaterializeRule.skip_on_not_all_parents_updated())
 
 class CustomDagsterDbtTranslator(DagsterDbtTranslator):
     def get_auto_materialize_policy(
         self, dbt_resource_props: Mapping[str, Any]
     ) -> Optional[AutoMaterializePolicy]:
-        return AutoMaterializePolicy.eager()
+        return wait_for_all_parents_policy
 
     def get_group_name(
         self, dbt_resource_props: Mapping[str, Any]
