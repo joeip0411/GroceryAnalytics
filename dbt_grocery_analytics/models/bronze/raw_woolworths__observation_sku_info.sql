@@ -1,8 +1,9 @@
 {{ config(
     tags = ["bronze"]
 ) 
+}} 
 
-}} with final as (
+with final as (
     select
         *
     from
@@ -14,7 +15,7 @@
             select
                 max(extractiontime)
             from
-                { { this } }
+                {{ this }}
         ) 
     {% endif %}
 )

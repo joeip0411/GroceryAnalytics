@@ -1,6 +1,5 @@
 {{ config(
-        tags=["specials_price_tracking", "gold"],
-        group="specials_price_tracking"
+        tags=["specials_price_tracking", "gold"]
     ) 
 }} 
 

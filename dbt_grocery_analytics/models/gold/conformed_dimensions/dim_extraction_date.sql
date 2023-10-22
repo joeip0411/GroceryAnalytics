@@ -1,7 +1,6 @@
 {{ config(
         materialized = 'view',
-        tags=["grocery_basket_price_tracking", "specials_price_tracking", "gold"],
-        group="conformed_dimensions"
+        tags=["grocery_basket_price_tracking", "specials_price_tracking", "gold"]
     ) 
 }} 
 

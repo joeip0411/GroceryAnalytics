@@ -29,16 +29,4 @@ models:
       - name: EXTRACTIONTIME
         test:
           - not_null
-  - name: raw_woolworths__specials_sku
-    columns:
-      - name: CATEGORY
-        tests:
-          - not_null
-      - name: EXTRACTIONTIME
-        test:
-          - not_null
-      - name: SKU
-        test:
-          - not_null
-
     

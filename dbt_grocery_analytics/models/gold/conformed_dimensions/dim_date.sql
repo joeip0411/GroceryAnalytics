@@ -1,7 +1,6 @@
 {{ config(
         materialized = 'table',
         tags=["gold"],
-        group="conformed_dimensions"
     ) 
 }} 
 

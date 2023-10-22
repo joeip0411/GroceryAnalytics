@@ -1,24 +1,8 @@
 version: 2
 
-groups:
-  - name: grocery_basket_price_tracking
-    owner:
-      name: Joe
-      email: joeip0411@gmail.com
-  - name: specials_price_tracking
-    owner:
-      name: Joe
-      email: joeip0411@gmail.com
-  - name: conformed_dimensions
-    owner:
-      name: Joe
-      email: joeip0411@gmail.com
-
-
 models:
 
   - name: fct_specials_price
-    group: specials_price_tracking
     description: |
         One row per product per extraction date time. 
 
@@ -51,7 +35,6 @@ models:
         description: Foreign key from dim_product.product_key
 
   - name: fct_grocery_basket_price
-    group: grocery_basket_price_tracking
     description: |
         One row per product per extraction date time. 
 

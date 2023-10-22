@@ -1,6 +1,5 @@
 {{ config(
-        tags=["grocery_basket_price_tracking", "gold"],
-        group="grocery_basket_price_tracking"
+        tags=["grocery_basket_price_tracking", "gold"]
     ) 
 }} 
 
