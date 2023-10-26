@@ -7,9 +7,8 @@ from dagster import (
     asset_sensor,
     multi_asset_sensor,
 )
+from dagster_grocery_analytics.jobs.ops_job import write_timestamp_job
 from dagster_slack import make_slack_on_run_failure_sensor
-
-from dagster_grocery_analytics.jobs import write_timestamp_job
 
 
 @asset_sensor(asset_key=AssetKey("my_simple_asset"), job=write_timestamp_job)

@@ -2,7 +2,8 @@ import os
 from datetime import datetime
 
 import pandas as pd
-from dagster import IOManager
+from dagster import EnvVar, IOManager
+from dagster_snowflake_pandas import SnowflakePandasIOManager
 
 
 class LocalCsvIOManager(IOManager):
@@ -85,3 +86,24 @@ class LocalSourceCsvIOManager(IOManager):
     
     def handle_output(self, context, obj):
         pass
+
+
+snowflake_io_manager_ga_raw = SnowflakePandasIOManager(
+                            account = "xn39852.australia-east.azure",
+                            user = "dbt",
+                            password = EnvVar("TF_VAR_SNOWFLAKE_DBT_PASSWORD"),
+                            database = "GROCERY_ANALYTICS",
+                            schema = "RAW",
+                            role = "SYSADMIN",
+                            warehouse = "ENGINEERING_WH",
+                        )
+
+snowflake_io_manager_ga_bronze = SnowflakePandasIOManager(
+                                account = "xn39852.australia-east.azure",
+                                user = "dbt",
+                                password = EnvVar("TF_VAR_SNOWFLAKE_DBT_PASSWORD"),
+                                database = "GROCERY_ANALYTICS",
+                                schema = "BRONZE",
+                                role = "SYSADMIN",
+                                warehouse = "ENGINEERING_WH",
+                            )
