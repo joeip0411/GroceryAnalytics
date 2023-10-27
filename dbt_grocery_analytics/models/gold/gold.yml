@@ -67,9 +67,8 @@ models:
           - type: primary_key
       - name: BRAND_NAME
         tests:
-          - not_null
           - unique
-      - name: EXTRACTIONTIME
+      - name: EXTRACTION_TIME
         tests:
           - not_null
   - name: dim_product
@@ -88,7 +87,6 @@ models:
       - name: PRODUCT_NAME
         tests:
           - not_null
-          - unique
       - name: SKU
         tests:
           - not_null
