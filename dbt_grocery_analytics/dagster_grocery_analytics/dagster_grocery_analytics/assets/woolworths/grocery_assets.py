@@ -48,11 +48,9 @@ def dbt_grocery_analytics_dbt_assets(context: OpExecutionContext, dbt: DbtCliRes
 
 
 observation_sku = SourceAsset(key=AssetKey("grocery_basket_sku"), 
-                            #   group_name = 'woolworths', 
                               io_manager_key='SnowflakeIOManagerGABronze')
 
 special_url = SourceAsset(key=AssetKey("specials_url"), 
-                        #   group_name='woolworths', 
                           io_manager_key='SnowflakeIOManagerGABronze')
 
 
